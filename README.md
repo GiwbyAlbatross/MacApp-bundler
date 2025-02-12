@@ -1,4 +1,4 @@
-# pybundler
+# MacApp-bundler
 A program to put python scripts into a macOS application bundle. Should work.
 ## Installation
 #### MacOS:
@@ -7,7 +7,7 @@ With homebrew:
 #### UNIX/GNU Linux
 With python already installed: `python3 -m pip install -r requirements.txt`
 
-Debian-like (ubuntu, etc.): `sudo apt install python3 python3-pip && pip3 install -r requirements.txt'
+Debian-like (ubuntu, etc.): `sudo apt install python3 python3-pip && pip3 install -r requirements.txt`
 
 Others: `install python somehow... ; python3 -m pip install -r requirements.txt`
 #### Windows
@@ -15,5 +15,5 @@ I don't really know... Maybe try Debian instructions under WSL? Just do whatever
 
 ## Usage
 ```
-python3 -m pybundler [OPTIONS] COMMAND [ARGS]
+python3 -m MacAppBundler [OPTIONS] COMMAND [ARGS]
 ```
