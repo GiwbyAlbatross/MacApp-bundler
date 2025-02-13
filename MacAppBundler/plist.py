@@ -29,8 +29,12 @@ def writeto(filename: Pathish, data: Union[dict, bytes, str]) -> int:
 def getdefaultplist(appname: str,
                     bundleIdentifier: str,
                     bundleVersion: str='0.0.0',
-                    minimumMacOSversion: str='10.4.8') -> bytes:
-    d = defaultdata.copy()
+                    minimumMacOSversion: str='10.4.8',
+                    *,
+                    bundleSignature: str='????',
+                    binary: bool=False,
+                    _defaultdata: dict = defaultdata) -> bytes:
+    d = _defaultdata.copy()
     d['CFBundleName'] = appname
     d['CFBundleDisplayName'] = appname
     d['CFBundleIdentifier'] = bundleIdentifier
@@ -38,5 +42,6 @@ def getdefaultplist(appname: str,
     d['CFBundleExecutable'] = appname.lower()
     d['CFBundleGetVersionString'] = ' '.join([appname, bundleVersion])
     d['LSMinimumSystemVersion'] = minimumMacOSversion
-    return plistlib.dumps(d)
+    d['CFBundleSignature'] = bundleSignature
+    return plistlib.dumps(d, fmt=(plistlib.FMT_BINARY if do_binary else plistlib.FMT_XML))
  
