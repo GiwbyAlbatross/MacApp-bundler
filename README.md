@@ -17,3 +17,7 @@ I don't really know... Maybe try Debian instructions under WSL? Just do whatever
 ```
 python3 -m MacAppBundler [OPTIONS] COMMAND [ARGS]
 ```
+
+## but the app doesn't run
+By default MacOS doesn't trust arbitrary executables or .app files. You need to right-click (or cntrl-click) the .app and select open.
+This should be the same as double-clicking a normal app, but it forces MacOS to trust the executable for the rest of eternity (on your computer.
