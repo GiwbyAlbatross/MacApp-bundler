@@ -21,3 +21,8 @@ python3 -m MacAppBundler [OPTIONS] COMMAND [ARGS]
 ## but the app doesn't run
 By default MacOS doesn't trust arbitrary executables or .app files. You need to right-click (or cntrl-click) the .app and select open.
 This should be the same as double-clicking a normal app, but it forces MacOS to trust the executable for the rest of eternity (on your computer.
+
+It could also be that you didn't create the app on a UNIX filesystem. MacOS uses UNIX permissions to identify executables, so on a filesystem that lacks such UNIX permissions, MacOS can't open the app.
+
+###### if there is an error message with an app from this tool, please add an issue to the repo. I want to know about it
+Try running the app in the terminal with `open <YourAppName.app>` and `/path/to/app/YourAppName.app/Contents/MacOS/yourappnamelowercase` and see if either of them. 
