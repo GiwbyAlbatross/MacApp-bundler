@@ -44,4 +44,35 @@ def getdefaultplist(appname: str,
     d['LSMinimumSystemVersion'] = minimumMacOSversion
     d['CFBundleSignature'] = bundleSignature
     return plistlib.dumps(d, fmt=(plistlib.FMT_BINARY if do_binary else plistlib.FMT_XML))
- 
+
+class BundleDocumentType:
+    extensions: list[str]
+    name: str
+    iconFile: str
+    role: str
+    def __init__(self,
+                 extensions: list[str],
+                 name: str,
+                 iconFile: str,
+                 role: str='Editor') -> None:
+        self.extensions = extensions
+        self.iconFile = iconFile
+        self.role = role
+        self.name = name
+    @property
+    def dict(self) -> dict:
+        return {
+            'CFBundleTypeExtensions':self.extensions,
+            'CFBundleTypeName':self.name,
+            'CFBundleTypeIconFile':self.iconFile,
+            'CFBundleTypeRole':self.role
+        }
+
+class BundleDocumentTypes:
+    doctype_objs: list[BundleDocumentType]
+    @property
+    def dict(self) -> dict[str, list[dict]]:
+        return {'CFBundleDocumentTypes':self.doctypes}
+    @property
+    def doctypes(self) -> list[dict]:
+        return [doctype.dict for doctype in self.doctype_objs]

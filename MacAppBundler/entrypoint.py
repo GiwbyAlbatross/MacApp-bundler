@@ -21,7 +21,7 @@ import os.path as path
 
 path = Path(__file__).absolute()
 os.chdir(str(path.parents[2]))
-os.chdir(path.join('Resources', {assetfolder}))
+os.chdir(path.join('Resources', '{assetfolder}'))
 assetfolder = Path(os.getcwd())
 os.chdir('{cwd}')
 
