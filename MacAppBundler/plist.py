@@ -33,8 +33,8 @@ def getdefaultplist(appname: str,
                     *,
                     bundleSignature: str='????',
                     binary: bool=False,
-                    _defaultdata: dict = defaultdata) -> bytes:
-    d = _defaultdata.copy()
+                    _defaultdata: dict = {}) -> bytes:
+    d = {**_defaultdata, **defaultdata}
     d['CFBundleName'] = appname
     d['CFBundleDisplayName'] = appname
     d['CFBundleIdentifier'] = bundleIdentifier
